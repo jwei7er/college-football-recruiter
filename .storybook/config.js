@@ -1,4 +1,10 @@
-import { configure } from '@storybook/react';
+import { addParameters, configure } from '@storybook/react';
+
+addParameters({
+  options: {
+    showPanel: false
+  }
+});
 
 function loadStories() {
   const req = require.context('../src', true, /\.story\.(ts|tsx)$/);
