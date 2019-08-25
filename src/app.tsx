@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './app.css';
+import React, { FC, useState } from 'react';
+import styled from 'styled-components';
+import TeamChooser from './components/team-chooser';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+enum ViewStates {
+  TeamChooser = 'TEAM_CHOOSER'
 }
 
-export default App;
+const App: FC = () => {
+  const [view, setView] = useState(ViewStates.TeamChooser);
+  const [teamId, setTeamId] = useState<string>();
+
+  if (view === ViewStates.TeamChooser) {
+    return <TeamChooser begin={setTeamId} />;
+  }
+  return null;
+};
+
+export default styled(App)``;
